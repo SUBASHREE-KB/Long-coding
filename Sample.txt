@@ -1,0 +1,171 @@
+import java.util.Date;
+
+public class Sample{
+
+    // Movie CRUD Operations
+    public static void addMovie(Movie movie) {
+        Database.movies.add(movie);
+        System.out.println("Movie added successfully.");
+    }
+
+    public static void updateMovie(int movieId, String title, String language, String genre, Date releaseDate) {
+        for (Movie movie : Database.movies) {
+            if (movie.getMovieId() == movieId) {
+                movie.setTitle(title);
+                movie.setLanguage(language);
+                movie.setGenre(genre);
+                movie.setReleaseDate(releaseDate);
+                System.out.println("Movie updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Movie not found.");
+    }
+
+    public static void deleteMovie(int movieId) {
+        boolean removed = Database.movies.removeIf(movie -> movie.getMovieId() == movieId);
+        if (removed) {
+            System.out.println("Movie deleted successfully.");
+        } else {
+            System.out.println("Movie not found.");
+        }
+    }
+
+    // Cinema CRUD Operations
+    public static void addCinema(Cinema cinema) {
+        Database.cinemas.add(cinema);
+        System.out.println("Cinema added successfully.");
+    }
+
+    public static void updateCinema(int cinemaId, String name, String address, City city) {
+        for (Cinema cinema : Database.cinemas) {
+            if (cinema.getCinemaId() == cinemaId) {
+                cinema.setName(name);
+                cinema.setAddress(address);
+                cinema.setCity(city);
+                System.out.println("Cinema updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Cinema not found.");
+    }
+
+    public static void deleteCinema(int cinemaId) {
+        boolean removed = Database.cinemas.removeIf(cinema -> cinema.getCinemaId() == cinemaId);
+        if (removed) {
+            System.out.println("Cinema deleted successfully.");
+        } else {
+            System.out.println("Cinema not found.");
+        }
+    }
+
+    // Show CRUD Operations
+    public static void addShow(Show show) {
+        Database.shows.add(show);
+        System.out.println("Show added successfully.");
+    }
+
+    public static void updateShow(int showId, Movie movie, Cinema cinema, Date showDate, String startTime, int duration) {
+        for (Show show : Database.shows) {
+            if (show.getShowId() == showId) {
+                show.setMovie(movie);
+                show.setCinema(cinema);
+                show.setShowDate(showDate);
+                show.setStartTime(startTime);
+                show.setDuration(duration);
+                System.out.println("Show updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Show not found.");
+    }
+
+    public static void deleteShow(int showId) {
+        boolean removed = Database.shows.removeIf(show -> show.getShowId() == showId);
+        if (removed) {
+            System.out.println("Show deleted successfully.");
+        } else {
+            System.out.println("Show not found.");
+        }
+    }
+
+    // City CRUD Operations
+    public static void addCity(City city) {
+        Database.cities.add(city);
+        System.out.println("City added successfully.");
+    }
+
+    public static void updateCity(int cityId, String name) {
+        for (City city : Database.cities) {
+            if (city.getCityId() == cityId) {
+                city.setName(name);
+                System.out.println("City updated successfully.");
+                return;
+            }
+        }
+        System.out.println("City not found.");
+    }
+
+    public static void deleteCity(int cityId) {
+        boolean removed = Database.cities.removeIf(city -> city.getCityId() == cityId);
+        if (removed) {
+            System.out.println("City deleted successfully.");
+        } else {
+            System.out.println("City not found.");
+        }
+    }
+
+    // Seat CRUD Operations
+    public static void addSeat(Seat seat) {
+        Database.seats.add(seat);
+        System.out.println("Seat added successfully.");
+    }
+
+    public static void updateSeat(int seatId, int number, String type) {
+        for (Seat seat : Database.seats) {
+            if (seat.getSeatId() == seatId) {
+                seat.setNumber(number);
+                seat.setType(type);
+                System.out.println("Seat updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Seat not found.");
+    }
+
+    public static void deleteSeat(int seatId) {
+        boolean removed = Database.seats.removeIf(seat -> seat.getSeatId() == seatId);
+        if (removed) {
+            System.out.println("Seat deleted successfully.");
+        } else {
+            System.out.println("Seat not found.");
+        }
+    }
+
+    // Coupon CRUD Operations
+    public static void addCoupon(Coupon coupon) {
+        Database.coupons.add(coupon);
+        System.out.println("Coupon added successfully.");
+    }
+
+    public static void updateCoupon(int couponId, String code, double discount) {
+        for (Coupon coupon : Database.coupons) {
+            if (coupon.getCouponId() == couponId) {
+                coupon.setCode(code);
+                coupon.setDiscount(discount);
+                System.out.println("Coupon updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Coupon not found.");
+    }
+
+    public static void deleteCoupon(int couponId) {
+        boolean removed = Database.coupons.removeIf(coupon -> coupon.getCouponId() == couponId);
+        if (removed) {
+            System.out.println("Coupon deleted successfully.");
+        } else {
+            System.out.println("Coupon not found.");
+        }
+    }
+}
